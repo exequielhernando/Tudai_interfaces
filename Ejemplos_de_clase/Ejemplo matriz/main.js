@@ -13,3 +13,5 @@ for (let i = 0; i < cols; i++) {
 console.table(matrix);
 
 console.log("Ahora hay que resolver el ejercicio . . .");
+
+
