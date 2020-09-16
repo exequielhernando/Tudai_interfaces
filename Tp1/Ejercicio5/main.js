@@ -3,7 +3,7 @@ let context = canvas.getContext('2d');
 let width = canvas.width;
 let height = canvas.height;
 let imageData = context.createImageData(width, height);
-let ratio = 255 / (height/2);
+let ratio = 255 / (width/2);
 let r = 0;
 let g = 0;
 let b = 0;
@@ -18,20 +18,16 @@ const setPixel = (imageData, x, y, r, g, b, a) => {
 }
 const drawRect = (imageData, ratio, r, g, b, a) => {
     for (let x = 0; x < width; x++) { 
-        for (let y = 0; y < height; y++) {
-            if (y <= height/2) {
-                r += ratio;
-                g += ratio;
-            } 
-            if(y > height/2) {
-                g -= ratio;
-            }
-            setPixel(imageData, x, y, r, g, b, a);
-            
+        if (x <= width/2) {
+            r += ratio;
+            g += ratio;
+        } 
+        if(x > width/2) {
+            g -= ratio;
         }
-        r = 0;
-        g = 0;
-        b = 0;
+        for (let y = 0; y < height; y++) {     
+            setPixel(imageData, x, y, r, g, b, a);   
+        }
     }
 }
 
