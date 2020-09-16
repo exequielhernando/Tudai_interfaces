@@ -22,7 +22,7 @@ const drawRect = (imageData, ratio, r, g, b, a) => {
             r += ratio;
             g += ratio;
         } 
-        if(x > width/2) {
+        else {
             g -= ratio;
         }
         for (let y = 0; y < height; y++) {     
