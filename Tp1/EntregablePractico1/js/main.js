@@ -41,10 +41,11 @@ window.addEventListener("load", () =>{
             // Estilos de linea
             context.lineJoin = context.lineCap = 'round';
             context.lineWidth = document.querySelector("#pencil-size").value;
+            console.log(e);
             // Redibuja todas las lineas guardadas
             context.beginPath();
-            context.moveTo(e.clientX, e.clientY);
-            context.lineTo(e.clientX, e.clientY);
+            context.moveTo(e.layerX , e.layerY );
+            context.lineTo(e.layerX , e.layerY );
             context.stroke();
         }
        
