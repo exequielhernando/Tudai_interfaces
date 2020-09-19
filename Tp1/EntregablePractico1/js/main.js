@@ -43,8 +43,8 @@ window.addEventListener("load", () =>{
             context.lineWidth = document.querySelector("#pencil-size").value;
             // Redibuja todas las lineas guardadas
             context.beginPath();
-            context.moveTo(e.clientX, e.clientY);
-            context.lineTo(e.clientX, e.clientY);
+            context.moveTo(e.layerX, e.layerY);
+            context.lineTo(e.layerX, e.layerY);
             context.stroke();
         }
        
