@@ -46,6 +46,7 @@ window.addEventListener("load", () =>{
             context.moveTo(e.layerX, e.layerY);
             context.lineTo(e.layerX, e.layerY);
             context.stroke();
+            
         }
        
     }
