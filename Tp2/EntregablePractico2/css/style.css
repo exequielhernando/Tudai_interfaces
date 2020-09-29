@@ -1,0 +1,49 @@
+body{
+    background-color: rgb(212, 106, 106);
+}
+
+h1, h2{
+    font-family: 'Amethyst';
+}
+
+.header{
+    margin-top: 3px;
+}
+
+.header-page{
+    text-align: center;
+    margin-bottom: -4px;
+}
+
+.header-actions{
+    text-align: center;
+}
+
+.players.current-shift {
+    box-shadow: 3px 3px #00c9d1; 
+    color: #208d91;
+}
+
+.info{
+    margin-bottom: 0px;
+}
+
+#winner-info, #draw-info{
+    width: 100%;
+}
+
+.winner-message{
+    text-align: center;
+    margin-top: 4px;
+}
+
+#board{
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+
+
+.hide {
+    display: none;
+}
