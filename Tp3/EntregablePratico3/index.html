@@ -4,65 +4,91 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <div id="mySidenav" class="sidenav">
-    <a  class="closebtn" id="closeNav">&times;</a>
-    <a href="#" >Home</a>
-    <a href="#historia" >Historia</a>
-    <a href="#galeria" >Galeria</a>
-    <a href="#creditos" >Creditos</a>
-  </div>  
-  <span style="text-align:center;
-  position: fixed;z-index: 1; font-size:40px;cursor:pointer; opacity: 0.85;"  id="openNav">&#9776;</span>
+<body >
+  <div class="loader-content">
+    <div id="contenedor">
+      <div class="loader" id="loader"></div>
+      <h1 class="title">Loading . . .</h1> 
+    </div>
+  </div>
+  <div id="content" class="hide-content">
+    <header>
+      <nav>
+        <div id="mySidenav" class="sidenav">
+          <a  class="closebtn" id="closeNav">&times;</a>
+          <a href="#home" >Home</a>
+          <a href="#personajes" >Personajes</a>
+          <a href="#galeria" >Galeria</a>
+          <a href="#countdown" >Cuenta Regresiva</a>
+          <a href="https://harrypotter.fandom.com/wiki/Main_Page" target="_blank" >Wiki fans</a>
+          <a href="https://es.wikipedia.org/wiki/Harry_Potter" target="_blank">Historia</a>
+          <a href="https://www.wizardingworld.com/" target="_blank">Wizarding World</a>
+          <a href="https://www.filmaffinity.com/co/movie-group.php?group-id=3" target="_blank">Saga Completa</a>
+          <a href="https://www.harrypotterfanzone.com/" target="_blank">Fan Zone</a>
+        </div>  
+        <span id="openNav">&#9776;</span>      
+      </nav>
+    </header>
+    <section>
+      <div id="home" class="bgimg-1">
+        <div id="snitch"></div>
+        <div class="caption">
+  
+          <span class="border" id="border1">THE</span>
+        </div>
+      </div>
+          
+      <div class="text-1" >
+        <h3 >Parallax Demo</h3>
+        <p>Parallax scrolling is a web site trend where the background content is moved at a different speed than the foreground content while scrolling. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. Viverra interdum mi magna mi, morbi sociis. Condimentum dui ipsum consequat morbi, curabitur aliquam pede, nullam vitae eu placerat eget et vehicula. Varius quisque non molestie dolor, nunc nisl dapibus vestibulum at, sodales tincidunt mauris ullamcorper, dapibus pulvinar, in in neque risus odio. Accumsan fringilla vulputate at quibusdam sociis eleifend, aenean maecenas vulputate, non id vehicula lorem mattis, ratione interdum sociis ornare. Suscipit proin magna cras vel, non sit platea sit, maecenas ante augue etiam maecenas, porta porttitor placerat leo.</p>
+      </div>
+      <div class="bgimg-2">
+        <div class="caption">
+          <span class="border" id="border2">THE BOY</span>
+        </div>
+      </div>
+          
+      <div>
+        <div  class="text-2" >
+          <p>Okaaaaa.</p>
+        </div>
+      </div>
+          
+      <div  class="bgimg-3">
+        <div class="caption">
+          <span class="border" id="border3">THE BOY WHO</span>
+        </div>
+      </div>
+          
+      <div>
+        <div class="text-2">
+          <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
+        </div>
+      </div>
+          
+      <div class="bgimg-4">
+        <div class="caption">
+          <span class="border" id="border4">THE BOY WHO LIVED</span>
+        </div>
+      </div>
+      <div id="personajes">
 
-<div>
-  <div class="bgimg-1">
-    <div class="caption">
-      <span class="border">SCROLL DOWN</span>
-    </div>
-  </div>
-      
-  <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
-    <h3 style="text-align:center;">Parallax Demo</h3>
-    <p>Parallax scrolling is a web site trend where the background content is moved at a different speed than the foreground content while scrolling. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. Viverra interdum mi magna mi, morbi sociis. Condimentum dui ipsum consequat morbi, curabitur aliquam pede, nullam vitae eu placerat eget et vehicula. Varius quisque non molestie dolor, nunc nisl dapibus vestibulum at, sodales tincidunt mauris ullamcorper, dapibus pulvinar, in in neque risus odio. Accumsan fringilla vulputate at quibusdam sociis eleifend, aenean maecenas vulputate, non id vehicula lorem mattis, ratione interdum sociis ornare. Suscipit proin magna cras vel, non sit platea sit, maecenas ante augue etiam maecenas, porta porttitor placerat leo.</p>
-  </div>
-  <div id="historia" class="bgimg-2">
-    <div class="caption">
-      <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">LESS HEIGHT</span>
-    </div>
-  </div>
-      
-  <div>
-    <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-      <p>Okaaaaa.</p>
-    </div>
-  </div>
-      
-  <div id="Galeria" class="bgimg-3">
-    <div class="caption">
-      <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">SCROLL UP</span>
-    </div>
-  </div>
-      
-  <div>
-    <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-      <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
-    </div>
-  </div>
-      
-  <div id="creditos" class="bgimg-4">
-    <div class="caption">
-      <span class="border">COOL!</span>
-    </div>
-  </div>
-</div>
-<section>
-  <div id="use-ajax">
+       
+      </div>
+      <div id="galeria" >
+       
+      </div>
+      <div id="countdown" >
+        <div >
+          <h1 class="title-deadline" >Deadline Avant Premier</h1>
+        </div>
+        <div class="simply-section">
 
-  </div>
-</div>
-
-</section>
+        </div>
+      </div>
+    </div>
+    </section>
+    
 <script src="js/script.js"></script>
 </body>
 </html>
