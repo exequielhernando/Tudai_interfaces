@@ -1,0 +1,27 @@
+html, body {
+    margin: 0;
+    background: #000;
+}
+
+#bern {
+    width: 112px;
+    height: 156px;
+    margin: auto;    
+    background: url(../img/bernard-sprite.png) repeat-x;
+    /* Posicionamos el personaje sobre el camino de madera */
+    position: relative;
+    bottom: 34px;
+}
+
+#sky {
+    background: url(../img/monkey-sky.png) repeat-X;
+}
+
+#sea {
+    background: url(../img/monkey-sea.png) repeat-x;
+     /* Posicionamos el mar, para que no solape al cielo */
+    position: relative;
+    top: 145px;
+    /* Pequeño degradado interior para suavizar el mar. Puede consumir muchos recursos */
+    box-shadow: 10px 10px 45px RGBA(0, 0, 0, 0.85) inset;
+}
