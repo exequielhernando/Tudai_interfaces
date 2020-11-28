@@ -2,15 +2,34 @@
 window.addEventListener("load", () =>{
     let canvas = document.querySelector("#canvas");
     let context = canvas.getContext('2d');
-
+    let image;
     let sepia = document.querySelector("#sepia");
     let negative = document.querySelector("#negative"); 
     let light = document.querySelector("#light");
     let greyScale = document.querySelector("#grey-scale");
     let binary = document.querySelector("#binary");
+    let contrast = document.querySelector("#contrast");
+    let edgeDetection = document.querySelector("#edge-detection");
+    let blur = document.querySelector("#blur");
+    //
     let red = 0;
     let green = 0;
     let blue = 0;
+    let kernelBlur = [
+      [1 / 9, 1 / 9, 1 / 9],
+      [1 / 9, 1 / 9, 1 / 9],
+      [1 / 9, 1 / 9, 1 / 9],
+    ];
+    let kernel = [
+      [0, -1, 0],
+      [-1, 5, -1],
+      [0, -1 , 0],
+    ];
+    let kernelEdge = [
+      [-1, -1, -1],
+      [-1, 8, -1],
+      [-1, -1, -1],
+    ];
     let midleColor = (255*3/2);
     let openFile = document.querySelector("#openFile");
     let downloadFile = document.querySelector("#downloadFile");
@@ -29,20 +48,17 @@ window.addEventListener("load", () =>{
     
         // getting a hold of the file reference
         let file = e.target.files[0];
-
         // setting up the reader
         let reader = new FileReader();
         reader.readAsDataURL(file); // this is reading as data url
-
         // here we tell the reader what to do when it's done reading...
         reader.onload = readerEvent => {
             let content = readerEvent.target.result; // this is the content!
 
-            let image = new Image();
+            image = new Image();
             //image.crossOrigin = 'Anonymous';
 
             image.src = content;
-
             image.onload = function () {
 
                 let imageAspectRatio = (1.0 * this.height) / this.width;
@@ -65,7 +81,8 @@ window.addEventListener("load", () =>{
                 context.putImageData(imageData, 0, 0);
             }
         }
-    });
+        openFile.value = null;
+      });
     const  getPixel = (imageData, x, y, pos) => {
         let index = (x + y * imageData.width) * 4;
         return imageData.data[index + pos];
@@ -198,13 +215,75 @@ window.addEventListener("load", () =>{
         }
         context.putImageData(imageData, 0, 0);
       }
+    const contrastFilter = (contrastValue) => {
+      let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      let factor;
+      contrastValue || (contrastValue = 100); // Default value
+      factor = ( 259 * ( contrastValue + 255 ) ) / ( 255 * ( 259 - contrastValue ) );
+      for (let x = 0; x < imageData.width; x++) {
+          for (let y = 0; y < imageData.height; y++) {
+            
+            setPixel(imageData, x, y, factor * (getPixel(imageData, x, y, red) - 128) + 128, factor * (getPixel(imageData, x, y, green) - 128) + 128, factor *  (getPixel(imageData, x, y, blue) - 128) + 128);
+          }
+        }
+        context.putImageData(imageData, 0, 0);
+    }
+    const colorXMatrix = (x, y, imageData, matrix, color) => {
+      let aux =
+        getPixel(imageData, x - 1, y - 1, color) * matrix[0][0] +
+        getPixel(imageData, x, y - 1, color) * matrix[0][1] +
+        getPixel(imageData, x + 1, y - 1, color) * matrix[0][2] +
+        getPixel(imageData, x - 1, y, color) * matrix[1][0] +
+        getPixel(imageData, x, y, color) * matrix[1][1] +
+        getPixel(imageData, x + 1, y, color) * matrix[1][2] +
+        getPixel(imageData, x - 1, y + 1, color) * matrix[2][0] +
+        getPixel(imageData, x, y + 1, color) * matrix[2][1] +
+        getPixel(imageData, x + 1, y + 1, color) * matrix[2][2];
+      return aux;
+    }
+
+    const setKernelMatrixPixel = (x, y, imageData, matrix) =>{
+      let r = colorXMatrix(x, y, imageData, matrix, red);
+      let g = colorXMatrix(x, y, imageData, matrix, green);
+      let b = colorXMatrix(x, y, imageData, matrix, blue);
+      setPixel(imageData, x, y, r, g, b);
+    }
+    const kernelFilter = matrix => {
+
+      let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      for (let x = 0; x < imageData.width; x++) {
+        for (let y = 0; y < imageData.height; y++) {
+          setKernelMatrixPixel(x, y, imageData, matrix);
+        }
+      }
+      context.putImageData(imageData, 0, 0);
+    }
+
+  
+
+    
+
+     
     //Event Listener
     sepia.addEventListener("click", sepiaFilter);
     negative.addEventListener("click", negativeFilter);
     greyScale.addEventListener("click", greyFilter);
     binary.addEventListener("click", binaryFilter);
+    contrast.addEventListener("click", () =>{
+      let constrastValue = document.querySelector("#contrast-value").value;
+      contrastFilter(constrastValue);
+    });
     light.addEventListener("click", () =>{
       let lightValue = document.querySelector("#light-value").value;
-      HSLFilter(1,lightValue)
+      HSLFilter(2,lightValue);
+    });
+    edgeDetection.addEventListener("click", () => {
+      kernelFilter(kernelEdge);
+    });
+    blur.addEventListener("click", () =>{
+      kernelFilter(kernelBlur);
     });
 });
+
+
+

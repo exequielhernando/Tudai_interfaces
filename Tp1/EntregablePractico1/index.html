@@ -9,8 +9,8 @@
 <body>
     <div class="container">
         <div class="row align-items">
-            <div class="col-10 offset-2">
-                <ul class="nav nav-pills">
+            <div class="col-12">
+                <ul class="nav nav-pills navbar-light" style="background-color: #e3f2fd;"">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">Archivo</a>
                         <div class="dropdown-menu">
@@ -33,18 +33,26 @@
                             <a class="dropdown-item" id="sepia" role="button">Sepia</a>
                             <a class="dropdown-item" id="negative" role="button">Negativo</a>
                             <a class="dropdown-item" role="button" id="light">Brillo
-                                <input type="range" min="1" max="255" value="5" step="0.01" id="light-value" />
+                                <input type="range" min="1" max="8" value="1" step="0.001" id="light-value" />
                             </a>
                             <a class="dropdown-item" id="binary" role="button">Binarizacion</a>
                             <a class="dropdown-item" id="grey-scale" role="button">Escala de grises</a>
-                    </li>
-                </ul>   
-                <h1 class="col 12">Texto de presentacion</h1>
-                <div>
-                    <canvas id="canvas" width="600" height="600" style="border: #000 solid 1px;">
-                        your browser does not support canvas
-                    </canvas>
-                </div>
+                            <a class="dropdown-item" id="edge-detection" role="button">Deteccion de bordes</a>
+                            <a class="dropdown-item" id="blur" role="button">Blur</a>
+                            <a class="dropdown-item" role="button" id="contrast">Contraste
+                                <input type="range" min="-255" max="255" value="100" step="0.1" id="contrast-value" />
+                            </a>                    </li>
+                </ul> 
+                    <blockquote class="blockquote text-center">
+                        <h2 class="mb-0">Super Paint y Filtros por doquier.</h2>
+                        <footer class="blockquote-footer">Disfruta al maximo de tus imagenes <cite title="Source Title">No pares nunca de imaginar</cite></footer>
+                      </blockquote>
+                    <div class="col-12 text-center">
+                        <canvas id="canvas" width="800" height="800" style="border: #000 solid 1px;">
+                            your browser does not support canvas
+                        </canvas>
+                    </div>
+                
 
             </div>
         </div>

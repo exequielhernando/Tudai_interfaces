@@ -37,22 +37,22 @@ window.addEventListener("load", () =>{
     const drawLine = e => {
         e.preventDefault();
         if (erasing) context.strokeStyle = "#fff";
-        if (drawing) {
-            // Estilos de linea
+        if (!drawing) {
+            context.beginPath();
+            context.moveTo(e.layerX, e.layerY);
+        }   else{
             context.lineJoin = context.lineCap = 'round';
             context.lineWidth = document.querySelector("#pencil-size").value;
             // Redibuja todas las lineas guardadas
-            context.beginPath();
-            context.moveTo(e.layerX, e.layerY);
             context.lineTo(e.layerX, e.layerY);
             context.stroke();
-            
         }
        
     }
     // Enable pencil to draw
     const enablePencil = () => {
         context.strokeStyle = "#000";
+        context.lineJoin = "round";
         context.lineCap = "round";
         erasing = false;
         mouseEvents();
